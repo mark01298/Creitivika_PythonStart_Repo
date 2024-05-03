@@ -2,29 +2,45 @@ x=0
 y=0
 c=0
 v=255
+z=0
+a=0
 def setup():
+    global z
     size(800,800)
+    z=loadImage("g.png")
 def draw():
-    global x,y,c,v
-    if y == 1:
-        x=255
-    if y == 2:
-        v=0
-    if y == 3:
+    global x,y,c,v,z
+    if y == 15:
         c=255
+        v=255
+        x=0
+        #legendary
+    elif y == 13 and 14:
+        v=0
+        c=255
+        x=0
+        #mifik
+    elif y == 1 and 2 and 3 and 4 and 5 and 6 and 7 and 8:
+        c=0
+        v=0
+        x=255
+        #cwerch redkiy
+    elif y ==12 and 9 and 10 and 11:
+        c=255
+        v=0
+        x=255
+        
     fill(c,v,x)
     ellipse(400,400,300,300)
 def mouseClicked():
-    global x,y,c,v
+    global x,y,c,v,z,a
     xDif = 400 - mouseX
     yDif = 400 - mouseY
     if sqrt(xDif*xDif + yDif*yDif) < 150:
-        if y==0:
-            y=1
-        if y==2:
-            y=2
-        if y==3:
-            y=0
-        if y==1:
-            y=2
-       
+        y=int(random(1,16))
+        if y == 15:
+            background(255,170,0)
+            image(z,0,a,800,800)
+            fill(c,v,x)
+            a=a+1000
+            
